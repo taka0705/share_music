@@ -1,0 +1,43 @@
+<div class='container px-5 px-sm-0'>
+  <div class='row'>
+    <div class="col-sm-12">
+      <h2 class="text-center row col-sm-3">新規登録</h2>
+      <%= form_with model: @post, url: posts_path, method: :post  do |f| %>
+        <div class="form-group row">
+          <%= f.label '投稿画像', class: "col-sm-3" %>
+          <div class="col-sm-9">
+            <%= f.file_field :post_image, accept: "image/*" %>
+          </div>
+        </div>
+        <div class="form-group row">
+          <%= f.label 'アーティスト名', class: "col-sm-3" %>
+          <div class="col-sm-9">
+            <%= f.text_field :artist_name %>
+          </div>
+        </div>
+        <div class="form-group row">
+          <%= f.label '曲名', class: "col-sm-3" %>
+          <div class="col-sm-9">
+            <%= f.text_field :song_title %>
+          </div>
+        </div>
+        <div class="form-group row">
+          <%= f.label 'タイトル', class: "col-sm-3" %>
+          <div class="col-sm-9">
+            <%= f.text_field :title %>
+          </div>
+        </div>
+        <div class="form-group row">
+          <%= f.label '投稿内容', class: "col-sm-3" %>
+          <div class="col-sm-9">
+          <%= f.text_area :content,rows:8,cols: 60 %>
+          </div>
+        </div>
+
+        <div class="form-group text-center">
+          <%= f.submit "新規登録", class: "btn btn-success" %>
+        </div>
+      <% end %>
+    </div>
+  </div>
+</div>

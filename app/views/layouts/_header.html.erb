@@ -1,0 +1,37 @@
+<div class= "container-fluid bg-secondary">
+  <div class="row">
+    <div class="col-md-3 mt-5 mb-3">
+
+
+
+    </div>
+    <div class="col-md-9 text-right mt-3 mb-5">
+      <p>
+ <% if admin_signed_in? %>
+        <%= link_to "投稿一覧", admin_posts_path,class: 'border border-dark btn btn-light text-dark' %>
+        <%=  link_to "ユーザ一覧", admin_root_path,class: 'border border-dark btn btn-light text-dark' %>
+        <%= link_to "ジャンル一覧", admin_genres_path ,class: 'border border-dark btn btn-light text-dark' %>
+        <%= link_to "ログアウト", destroy_admin_session_path, method: :delete, class: 'border border-dark btn btn-light text-dark' %>
+<% elsif user_signed_in? %>
+        <%= link_to "マイページ", users_my_page_path,class: 'border border-dark btn btn-light text-dark' %>
+        <%= link_to "投稿一覧", posts_path,class: 'border border-dark btn btn-light text-dark' %>
+        <%= link_to "投稿する", new_post_path,class: 'border border-dark btn btn-light text-dark' %>
+        <%= link_to "ログアウト", destroy_user_session_path, method: :delete, class: 'border border-dark btn btn-light text-dark' %>
+<% else %>
+        <%= link_to "About", about_path,class: 'border border-dark btn btn-light text-dark' %>
+        <%= link_to "投稿一覧", posts_path,class: 'border border-dark btn btn-light text-dark' %>
+        <%= link_to "新規登録", new_user_registration_path,class: 'border border-dark btn btn-light text-dark' %>
+        <%= link_to "ログイン", new_user_session_path,class: 'border border-dark btn btn-light text-dark' %>
+<% end %>
+      </p>
+      <div class="search_form">
+    <%= form_with url: searches_path, local: true, method: :get do |f| %>
+      <%= f.text_field :word %>
+      <%= f.select :range, options_for_select([['Artist'], ['Song']]) %>
+      <%= f.select :search, options_for_select([["完全一致","perfect_match"], ["前方一致","forward_match"],  ["後方一致","backward_match"], ["部分一致","partial_match"]]) %>
+      <%= f.submit "検索", class: "btn btn-primary" %>
+    <% end %>
+  </div>
+    </div>
+  </div>
+</div>
