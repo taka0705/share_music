@@ -18,6 +18,7 @@
         <%= link_to "投稿する", new_post_path,class: 'border border-dark btn btn-light text-dark' %>
         <%= link_to "ログアウト", destroy_user_session_path, method: :delete, class: 'border border-dark btn btn-light text-dark' %>
 <% else %>
+        <%= link_to 'ゲストログイン（閲覧用）', users_guest_sign_in_path, class: "border border-dark btn btn-light text-dark", method: :post %>
         <%= link_to "About", about_path,class: 'border border-dark btn btn-light text-dark' %>
         <%= link_to "投稿一覧", posts_path,class: 'border border-dark btn btn-light text-dark' %>
         <%= link_to "新規登録", new_user_registration_path,class: 'border border-dark btn btn-light text-dark' %>

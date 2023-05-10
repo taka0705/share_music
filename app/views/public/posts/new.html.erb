@@ -1,7 +1,23 @@
 <div class='container px-5 px-sm-0'>
   <div class='row'>
     <div class="col-sm-12">
-      <h2 class="text-center row col-sm-3">新規登録</h2>
+      
+      <% if @post.errors.any? %>
+  <div id="error_explanation">
+    <h2><%= pluralize(@post.errors.count, "error") %> prohibited this post from being saved:</h2>
+
+    <ul>
+    <% @post.errors.full_messages.each do |message| %>
+      <li><%= message %></li>
+    <% end %>
+    </ul>
+  </div>
+<% end %>
+
+      
+      
+      
+      <h2 class="text-center row col-sm-3">新規投稿作成</h2>
       <%= form_with model: @post, url: posts_path, method: :post  do |f| %>
         <div class="form-group row">
           <%= f.label '投稿画像', class: "col-sm-3" %>
@@ -33,6 +49,15 @@
           <%= f.text_area :content,rows:8,cols: 60 %>
           </div>
         </div>
+        
+        
+        <div class="form-group row">
+          <%= f.label 'ジャンル', class: "col-sm-3" %>
+          <div class="col-sm-9">
+          <%= f.collection_select :genre_id, Genre.all, :id, :name, class: "col-sm-3 form-control border-dark" %>
+          </div>
+        </div>
+          
 
         <div class="form-group text-center">
           <%= f.submit "新規登録", class: "btn btn-success" %>
