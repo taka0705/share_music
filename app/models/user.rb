@@ -11,6 +11,12 @@ class User < ApplicationRecord
   devise :database_authenticatable, :registerable,
          :recoverable, :rememberable, :validatable
          
+         
+     def get_image
+    (user_image.attached?) ? user_image : 'no_image.jpg'
+     end
+    
+         
   def self.guest
     find_or_create_by!(name: 'guestuser' ,email: 'guest@example.com') do |user|
       user.password = SecureRandom.urlsafe_base64

@@ -10,7 +10,9 @@ class Public::UsersController < ApplicationController
   def update
   end
 
-  def mypage
+  def my_page
+    @user = current_user
+    @posts = @user.posts.all.order(created_at: :desc)
   end
 
   def check
@@ -32,6 +34,6 @@ private
     if @user.name == "guestuser"
       redirect_to user_path(current_user) , notice: 'ゲストユーザーはプロフィール編集画面へ遷移できません。'
     end
-  end  
+  end
 
 end

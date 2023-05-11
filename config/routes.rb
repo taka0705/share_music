@@ -39,11 +39,11 @@ devise_for :admin,skip: [:registrations, :passwords] , controllers: {
       resources :post_comments, only: [:create, :destroy]
     end
     resources :users, only: [:show, :edit, :update]
-    get 'users/my_page' => 'users#mypage'
+    get 'user/my_page' => 'users#my_page'
     get 'users/check' => 'users#check'
     patch 'users/withdraw' => 'users#withdraw'
-    get 'users/favorites' => 'users#favorites'
-    get 'users/complete' => 'users#complete'
+    get 'user/favorites' => 'users#favorites'
+    get 'user/complete' => 'users#complete'
 
 
 

@@ -1,4 +1,4 @@
-<div class= "container-fluid bg-secondary">
+<div class= "container-fluid bg-secondary header fixed-top">
   <div class="row">
     <div class="col-md-3 mt-5 mb-3">
 
@@ -13,7 +13,7 @@
         <%= link_to "ジャンル一覧", admin_genres_path ,class: 'border border-dark btn btn-light text-dark' %>
         <%= link_to "ログアウト", destroy_admin_session_path, method: :delete, class: 'border border-dark btn btn-light text-dark' %>
 <% elsif user_signed_in? %>
-        <%= link_to "マイページ", users_my_page_path,class: 'border border-dark btn btn-light text-dark' %>
+        <%= link_to "マイページ", user_my_page_path,class: 'border border-dark btn btn-light text-dark' %>
         <%= link_to "投稿一覧", posts_path,class: 'border border-dark btn btn-light text-dark' %>
         <%= link_to "投稿する", new_post_path,class: 'border border-dark btn btn-light text-dark' %>
         <%= link_to "ログアウト", destroy_user_session_path, method: :delete, class: 'border border-dark btn btn-light text-dark' %>
