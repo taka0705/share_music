@@ -8,10 +8,11 @@
   <div class="col-sm-3 text-center">
    <%= image_tag @user.get_image, size:"150x150" %>
   </div>
-  <div class="col-sm-9">
-    <h5><%= @user.name %></h5>
-    <%= @user.try(:introduction) %>
+  <div class="col-sm-8">
+    <div><h5><%= @user.name %></h5></div>
+    <div><%= @user.try(:introduction) %></div>
   </div>
+
 </div>
 
 <div class="row">

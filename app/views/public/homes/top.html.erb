@@ -1,1 +1,24 @@
-<h1>TOP</h1>
+<div class="container">
+  <div class="row">
+    <div class="col-sm-4 text-center">
+    <h4>新着投稿</h4>
+    </div>
+    <div class="col-sm-8 text-center">
+      <%= link_to "すべての投稿を見る",posts_path %>
+    </div>
+  </div>
+
+  <% @posts.limit(4).each do |post| %>
+    <%= l post.created_at %>
+    <div class="row">
+      <div class="col-sm-4 text-right">
+        <%= image_tag post.get_image, size:"200x200" %>
+      </div>
+      <div class="col-sm-8 text-center pt-5">
+        <div><%= post.artist_name %></div>
+        <div><%= post.song_title %></div>
+        <div><%= post.title %></div>
+      </div>
+    </div>
+  <% end %>
+</div>

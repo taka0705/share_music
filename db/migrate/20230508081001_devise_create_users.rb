@@ -8,6 +8,7 @@ class DeviseCreateUsers < ActiveRecord::Migration[6.1]
       t.string :encrypted_password, null: false, default: ""
 
       # 自己紹介文
+
       t.text :introduction
 
       ## 名前を保存するカラム
