@@ -1,6 +1,7 @@
 class Public::UsersController < ApplicationController
     before_action :authenticate_user!
     before_action :ensure_guest_user, only: [:edit]
+
   def show
     @user = User.find(params[:id])
     @posts = @user.posts.all.order(created_at: :desc)
@@ -21,12 +22,20 @@ class Public::UsersController < ApplicationController
   end
 
   def check
+    @user = current_user
   end
 
   def withdraw
+    user = current_user
+    user.update_attribute(:user_status,1)
+    user.destroy
+    redirect_to user_complete_path
   end
 
   def favorites
+    @user = current_user
+    favorites = PostFavorite.where(user_id: @user.id).pluck(:post_id)
+    @favorites_posts = Post.find(favorites)
   end
 
   def complete

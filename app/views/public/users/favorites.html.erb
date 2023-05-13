@@ -1,0 +1,31 @@
+<div class="row">
+  <div class="col-sm-4 text-center">
+    <h3>いいね一覧</h3>
+  </div>
+</div>
+
+<table class="table table-hover table-inverse">
+  <thead>
+    <tr>
+      <th>投稿画像</th>
+      <th>ユーザ名</th>
+      <th>アーティスト名</th>
+      <th>曲名</th>
+      <th>タイトル</th>
+      <th>投稿日時</th>
+      <th colspan="6"></th>
+    </tr>
+  </thead>
+  <tbody>
+    <% @favorites_posts.each do |post| %>
+    <tr>
+      <td><%= image_tag post.get_image, size: '50x50' %></td>
+      <td><%= post.user.name %></td>
+      <td><%= post.artist_name %></td>
+      <td><%= post.song_title %></td>
+      <td><%= post.title %></td>
+      <td><%= l post.created_at %></td>
+    </tr>
+    <% end %>
+  </tbody>
+  </table>

@@ -40,8 +40,8 @@ devise_for :admin,skip: [:registrations, :passwords] , controllers: {
     end
     resources :users, only: [:show, :edit, :update]
     get 'user/my_page' => 'users#my_page'
-    get 'users/check' => 'users#check'
-    patch 'users/withdraw' => 'users#withdraw'
+    get 'user/check' => 'users#check'
+    patch 'user/withdraw' => 'users#withdraw'
     get 'user/favorites' => 'users#favorites'
     get 'user/complete' => 'users#complete'
 

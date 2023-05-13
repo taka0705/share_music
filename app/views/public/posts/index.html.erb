@@ -2,11 +2,15 @@
     <div class="col-sm-2 text-center"><h4>投稿一覧</h4></div>
   </div>
   <div class="row">
-  <div class="col-sm-3 text-center">ジャンル検索欄</div>
+  <div class="col-sm-3 text-center">
+    <% @genres.each do |genre| %>
+    <div><%= link_to genre.name,searches_path(genre_id: genre.id) %></div>
+    <% end %>
+  </div>
   <div class="col-sm-9 text-center">
             <div class="card-deck">
           <% @posts.each do |post| %>
-         
+
           <div class="col-md-2">
              <%= l post.created_at %>
             <div class="card mt-1">

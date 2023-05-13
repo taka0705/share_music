@@ -1,4 +1,11 @@
-<h2>ユーザ情報編集画面</h2>
+<div class="row">
+  <div class="col-sm-5 text-center">
+    <h2>ユーザ情報編集画面</h2>
+  </div>
+  <div class="col-sm-7 text-center">
+    <%= link_to "退会する",user_check_path,class: "btn btn-danger" %>
+  </div>
+</div>
 
 <%= form_with model: @user, url: user_path,method: :patch do |f| %>
 

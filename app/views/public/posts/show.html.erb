@@ -30,7 +30,18 @@
   <div class="col-sm-3"></div>
   <div class="col-sm-3 text-center">投稿本文</div>
   <div class="col-sm-6 text-center"><%= @post.content %></div>
-  <div class="col-sm-3">いいね　コメント数<%= @post.post_comments.count %></div>
+  <div class="col-sm-3">
+    　<% if @post.favorite?(current_user) %>
+    　<%= link_to post_post_favorite_path(@post.id), method: :delete do %>
+        <span style="color:red;">❤︎</span>
+      <% end %>
+      <% else %>
+      <%= link_to post_post_favorites_path(@post.id),method: :post do %>
+      <span>❤︎</span>
+      <% end %>
+      <% end %>
+      <%= @post.post_favorites.count %>
+    　コメント数<%= @post.post_comments.count %></div>
   <div class="col-sm-3 text-center">コメント送信欄</div>
   <div class="col-sm-9 text-center"><%= render 'public/post_comments/form',post: @post, post_comment: @post_comment %></div>
   <div class="col-sm-3 text-center">コメント一覧</div>

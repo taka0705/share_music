@@ -1,0 +1,56 @@
+<% if @range == "Artist" || @range == "Song" %>
+  <h2>"<%= params[:word] %>"の検索結果</h2>
+
+  <table class="table table-hover table-inverse">
+  <thead>
+    <tr>
+      <th>投稿画像</th>
+      <th>アーティスト名</th>
+      <th>曲名</th>
+      <th>タイトル</th>
+      <th>投稿日時</th>
+      <th colspan="5"></th>
+    </tr>
+  </thead>
+  <tbody>
+    <% @posts.each do |post| %>
+    <tr>
+      <td><%= image_tag post.get_image, size: '50x50' %></td>
+      <td><%= post.artist_name %></td>
+      <td><%= post.song_title %></td>
+      <td><%= post.title %></td>
+      <td><%= l post.created_at %></td>
+    </tr>
+    <% end %>
+  </tbody>
+  </table>
+
+<% else %>
+
+  <h2>"<%= @genre.name %>"の検索結果</h2>
+
+  <table class="table table-hover table-inverse">
+  <thead>
+    <tr>
+      <th>投稿画像</th>
+      <th>アーティスト名</th>
+      <th>曲名</th>
+      <th>タイトル</th>
+      <th>投稿日時</th>
+      <th colspan="5"></th>
+    </tr>
+  </thead>
+  <tbody>
+    <% @posts.each do |post| %>
+    <tr>
+      <td><%= image_tag post.get_image, size: '50x50' %></td>
+      <td><%= post.artist_name %></td>
+      <td><%= post.song_title %></td>
+      <td><%= post.title %></td>
+      <td><%= l post.created_at %></td>
+    </tr>
+    <% end %>
+  </tbody>
+  </table>
+
+<% end %>
