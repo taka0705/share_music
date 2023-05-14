@@ -1,0 +1,49 @@
+<div class="row">
+  <div class="col-sm-5 text-center">
+    <h3><%= @user.name %>さんのユーザ情報編集</h3>
+  </div>
+</div>
+
+<div class="row">
+  <div class="col-sm-8 mx-auto">
+    <%= form_with model: @user,url:admin_user_path(@user.id) do |f| %>
+          <table class= "table-borderless">
+        <tr>
+          <td>ユーザID</td>
+          <td><%= @user.id %></td>
+        </tr>
+        <tr>
+          <td>氏名</td>
+          <td>
+            <%= f.text_field :name %>
+          </td>
+        </tr>
+
+        <tr>
+          <td>メールアドレス</td>
+          <td>
+            <%= f.text_field :email %>
+          </td>
+        </tr>
+        <tr>
+          <td>会員ステータス</td>
+          <td>
+            <%= f.radio_button :user_status, "有効" %>
+            <%= f.label :user_status,"有効" %>
+
+            <%= f.radio_button :user_status, "退会" %>
+            <%= f.label :user_status,"退会" %>
+
+            <%= f.radio_button :user_status,"無効" %>
+            <%= f.label :user_status,"無効" %>
+          </td>
+        </tr>
+        <tr>
+          <td><%= f.submit "更新",class: "btn btn-success" %></td>
+        </tr>
+
+      </table>
+      <% end %>
+  </div>
+</div>
+
