@@ -64,7 +64,7 @@
         </td>
         <td><%= post.artist_name %></td>
         <td><%= post.song_title %></td>
-        <td><%= post.title %></td>
+        <td><%= link_to post.title,admin_post_path(post.id) %></td>
         <td><%= post.post_comments.count %></td>
         <td><%= l post.created_at %></td>
       </tr>

@@ -10,6 +10,8 @@ class Public::SearchesController < ApplicationController
     elsif params[:genre_id]
       @posts = Post.genre_looks(params[:genre_id])
       @genre = Genre.find(params[:genre_id])
+    elsif @range == "User"
+     @users = User.looks(params[:search],params[:word])
     else
       @posts = []
     end

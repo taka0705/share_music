@@ -43,6 +43,8 @@ class Post < ApplicationRecord
       @post = Post.all
     end
   end
+  
+  
 
   def self.genre_looks(genre_id)
 

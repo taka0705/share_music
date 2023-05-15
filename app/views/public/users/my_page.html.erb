@@ -16,8 +16,10 @@
 </div>
 
 <div class="row">
+  <% if @user.name != "guestuser" %>
   <div class="col-sm-9 text-right"><%= link_to "いいね一覧", user_favorites_path %></div>
   <div class="col-sm-3 text-center"><%= link_to "編集", edit_user_path(@user) %></div>
+  <% end %>
 </div>
 
 <div class="row">

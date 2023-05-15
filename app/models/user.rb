@@ -28,4 +28,22 @@ class User < ApplicationRecord
     end
   end
 
+  def self.looks(search,word)
+    if search =="perfect_match"
+      @user = User.where("name LIKE?","#{word}")
+    elsif search == "forward_match"
+      @user = User.where("name LIKE?","#{word}%")
+    elsif search == "backward_match"
+      @user = User.where("name LIKE?","%#{word}")
+    elsif search == "partial_match"
+      @user = User.where("name LIKE?","%#{word}%")
+    else
+      @user = User.all
+    end
+  end
+
+  def active_for_authentication?
+    super && user_status == "有効" # ユーザーがログインするためには、active?がtrueを返すことも必要
+  end
+
 end

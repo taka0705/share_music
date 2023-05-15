@@ -1,0 +1,9 @@
+       <% post.post_comments.each do |post_comment| %>
+<div>
+
+         <%= link_to post_comment.user.name,admin_user_path(post_comment.user) %>
+         <%= post_comment.comment %>
+         <%= link_to "Destroy", admin_post_post_comment_path(post_comment.post, post_comment), method: :delete,class: "btn btn-danger",remote: true %>
+
+</div>
+       <% end %>

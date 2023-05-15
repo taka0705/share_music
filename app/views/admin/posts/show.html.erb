@@ -1,0 +1,39 @@
+<div class="container">
+<div class="row">
+  <div class="col-sm-9"><h3>投稿詳細</h3></div>
+  <div class="col-sm-1">
+    <%= link_to @post.user.name,admin_user_path(@user) %>
+  </div>
+  <div class="col-sm-2">
+    <p><%= l @post.created_at %></p>
+  </div>
+</div>
+<div class="row">
+  <div class="col-3 text-center">投稿画像</div>
+  <div class="col-6 text-center">
+<%= image_tag @post.get_image, size:"150x150" %>
+</div>
+</div>
+<div class="row">
+  <div class="col-sm-3 text-center">アーティスト名</div>
+  <div class="col-sm-3 text-center"><%= @post.artist_name %></div>
+  <div class="col-sm-3 text-center">曲名</div>
+  <div class="col-sm-3 text-center"><%= @post.song_title %></div>
+</div>
+
+<div class="row">
+  <div class="col-sm-3 text-center">タイトル</div>
+  <div class="col-sm-6 text-center"><%= @post.title %></div>
+  <div class="col-sm-3"></div>
+  <div class="col-sm-3 text-center">投稿本文</div>
+  <div class="col-sm-6 text-center"><%= @post.content %></div>
+  <div class="col-sm-3">
+      ❤︎<%= @post.post_favorites.count %>
+    　コメント数<%= @post.post_comments.count %>
+  </div>
+  <div class="col-sm-3 text-center">コメント一覧</div>
+  <div class="col-sm-9 text-center"><%= render 'admin/post_comments/post_comments',post: @post %></div>
+</div>
+
+
+</div>
