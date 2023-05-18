@@ -24,6 +24,10 @@
     <% end %>
   </tbody>
   </table>
+
+  　　<div class="col-md-12 d-flex justify-content-center">
+        <%= paginate @posts %>
+    </div>
 <% elsif  @range == "User"%>
   <h2>"<%= params[:word] %>"の検索結果</h2>
 
@@ -45,5 +49,8 @@
   </tbody>
   </table>
 
+    <div class="col-md-12 d-flex justify-content-center">
+        <%= paginate @users %>
+    </div>
 
 <% end %>

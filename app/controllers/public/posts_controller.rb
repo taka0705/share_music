@@ -10,6 +10,7 @@ class Public::PostsController < ApplicationController
     # 投稿を作成する前にユーザーを適切に設定している
       @post.user_id = current_user.id
     if @post.save
+      flash[:notice] = "投稿に成功しました。"
       redirect_to post_path(@post)
     else
       # エラーメッセージを取得して、新規投稿ページを再表示する
@@ -19,7 +20,7 @@ class Public::PostsController < ApplicationController
   end
 
   def index
-    @posts=Post.all.order(created_at: :desc)
+    @posts=Post.order(created_at: :desc).page(params[:page]).per(10)
     @genres=Genre.all
   end
 
@@ -42,6 +43,12 @@ class Public::PostsController < ApplicationController
     end
   end
 
+  def destroy
+    @post = Post.find(params[:id])
+    @post.destroy
+    redirect_to posts_path,notice: "削除が成功しました。"
+  end
+
 
 private
   def post_params
@@ -50,7 +57,7 @@ private
 
   def ensure_guest_user
     if current_user.name == "guestuser"
-      redirect_to user_path(current_user) , notice: 'ゲストユーザー新規投稿や編集ができません。'
+      redirect_to user_path(current_user) , notice: 'ゲストユーザーは新規投稿や編集ができません。'
     end
   end
 

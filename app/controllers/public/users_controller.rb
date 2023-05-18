@@ -34,8 +34,8 @@ class Public::UsersController < ApplicationController
 
   def favorites
     @user = current_user
-    favorites = PostFavorite.where(user_id: @user.id).pluck(:post_id)
-    @favorites_posts = Post.find(favorites)
+    favorites = PostFavorite.where(user_id: @user.id).order(created_at: :desc).pluck(:post_id)
+    @favorites_posts = Post.where(id: favorites).page(params[:page]).per(10)
   end
 
   def complete
@@ -48,7 +48,7 @@ private
   end
 
   def ensure_guest_user
-    @user = User.find(params[:id])
+    @user = current_user
     if @user.name == "guestuser"
       redirect_to user_path(current_user) , notice: 'ゲストユーザーはプロフィール編集画面へ遷移できません。'
     end

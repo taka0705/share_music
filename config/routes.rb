@@ -37,7 +37,7 @@ devise_for :admin,skip: [:registrations, :passwords] , controllers: {
     root to: "homes#top"
 
     get '/about' => 'homes#about',as: 'about'
-    resources :posts, only: [:index, :show, :edit, :update, :new, :create] do
+    resources :posts, only: [:index, :show, :edit, :update, :new, :create, :destroy] do
       resources :post_favorites, only: [:create, :destroy]
       resources :post_comments, only: [:create, :destroy]
     end

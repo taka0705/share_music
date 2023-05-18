@@ -20,7 +20,7 @@ private
   def ensure_guest_user
     @post = Post.find(params[:post_id])
     if current_user.name == "guestuser"
-      redirect_to post_path(@post.id) , notice: 'ゲストユーザーはコメントができません。'
+      redirect_to post_path(@post.id) , notice: 'ゲストユーザーはいいねができません。'
     end
   end
 end

@@ -1,17 +1,29 @@
-<div class= "container-fluid bg-secondary header fixed-top">
+<div class= "container-fluid bg-dark header fixed-top">
   <div class="row">
-    <div class="col-md-3 mt-5 mb-3">
-
+    <div class="col-md-3">
+      <%= link_to root_path do %>
+        <%= image_tag 'logo.png',size:"140x140" %>
+      <% end %>
 
 
     </div>
-    <div class="col-md-9 text-right mt-3 mb-5">
+    <div class="col-md-9 text-right">
       <p>
  <% if admin_signed_in? %>
-        <%= link_to "投稿一覧", admin_posts_path,class: 'border border-dark btn btn-light text-dark' %>
-        <%=  link_to "ユーザ一覧", admin_root_path,class: 'border border-dark btn btn-light text-dark' %>
-        <%= link_to "ジャンル一覧", admin_genres_path ,class: 'border border-dark btn btn-light text-dark' %>
-        <%= link_to "ログアウト", destroy_admin_session_path, method: :delete, class: 'border border-dark btn btn-light text-dark' %>
+ <div class="d-flex justify-content-end align-items-start">
+        <%= link_to admin_posts_path,class: 'nav-link text-light' do %>
+         <i class="fas fa-th"></i>投稿一覧
+        <% end %>
+        <%= link_to admin_root_path,class: 'nav-link text-light' do %>
+        <i class="fas fa-users"></i>ユーザ一覧
+        <% end %>
+        <%= link_to admin_genres_path ,class: 'nav-link text-light' do %>
+        <i class="fas fa-list-alt"></i>ジャンル一覧
+        <% end %>
+        <%= link_to destroy_admin_session_path, method: :delete, class: 'nav-link text-light' do %>
+        <i class="fas fa-sign-out-alt"></i>ログアウト
+        <% end %>
+</div>
         <div class="search_form">
           <%= form_with url: admin_searches_path, local: true, method: :get do |f| %>
           <%= f.text_field :word %>
@@ -21,10 +33,20 @@
           <% end %>
         </div>
 <% elsif user_signed_in? %>
-        <%= link_to "マイページ", user_my_page_path,class: 'border border-dark btn btn-light text-dark' %>
-        <%= link_to "投稿一覧", posts_path,class: 'border border-dark btn btn-light text-dark' %>
-        <%= link_to "投稿する", new_post_path,class: 'border border-dark btn btn-light text-dark' %>
-        <%= link_to "ログアウト", destroy_user_session_path, method: :delete, class: 'border border-dark btn btn-light text-dark' %>
+<div class="d-flex justify-content-end align-items-start">
+        <%= link_to user_my_page_path,class: 'nav-link text-light' do %>
+        <i class="fas fa-house-user"></i>マイページ
+        <% end %>
+        <%= link_to  posts_path,class: 'nav-link text-light' do %>
+        <i class="fas fa-th"></i>投稿一覧
+        <% end %>
+        <%= link_to new_post_path,class: 'nav-link text-light' do %>
+        <i class="fas fa-pen"></i>投稿する
+        <% end %>
+        <%= link_to destroy_user_session_path, method: :delete, class: 'nav-link text-light' do %>
+        <i class="fas fa-sign-out-alt"></i>ログアウト
+        <% end %>
+</div>
         <div class="search_form">
         <%= form_with url: searches_path, local: true, method: :get do |f| %>
         <%= f.text_field :word %>
@@ -34,11 +56,23 @@
         <% end %>
         </div>
 <% else %>
-        <%= link_to 'ゲストログイン（閲覧用）', users_guest_sign_in_path, class: "border border-dark btn btn-light text-dark", method: :post %>
-        <%= link_to "About", about_path,class: 'border border-dark btn btn-light text-dark' %>
-        <%= link_to "投稿一覧", posts_path,class: 'border border-dark btn btn-light text-dark' %>
-        <%= link_to "新規登録", new_user_registration_path,class: 'border border-dark btn btn-light text-dark' %>
-        <%= link_to "ログイン", new_user_session_path,class: 'border border-dark btn btn-light text-dark' %>
+<div class="d-flex justify-content-end align-items-start">
+        <%= link_to users_guest_sign_in_path, class: 'nav-link text-light', method: :post do %>
+        <i class="fas fa-user"></i>ゲストログイン（閲覧用）
+        <% end %>
+        <%= link_to about_path,class: 'nav-link text-light' do %>
+        <i class="fas fa-smile-wink"></i>About
+        <% end %>
+        <%= link_to posts_path,class: 'nav-link text-light' do %>
+        <i class="fas fa-th"></i>投稿一覧
+        <% end %>
+        <%= link_to new_user_registration_path,class: 'nav-link text-light' do %>
+        <i class="fas fa-user-plus"></i>新規登録
+        <% end %>
+        <%= link_to new_user_session_path,class: 'nav-link text-light' do %>
+        <i class="fas fa-sign-in-alt"></i> ログイン
+        <% end %>
+        </div>
         <div class="search_form">
         <%= form_with url: searches_path, local: true, method: :get do |f| %>
         <%= f.text_field :word %>

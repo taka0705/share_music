@@ -7,6 +7,8 @@
   <div class="col-sm-2">
       <% if user_signed_in? && @user == current_user %>
     <%= link_to "編集", edit_post_path(@post), class: "btn btn-success" %>
+    <%= link_to "削除", post_path(@post),method: :delete, data: { confirm: '本当に消しますか？' }, class: "btn btn-danger" %>
+
     <% end %>
     <p><%= l @post.created_at %></p>
   </div>
@@ -26,10 +28,16 @@
 
 <div class="row">
   <div class="col-sm-3 text-center">タイトル</div>
-  <div class="col-sm-6 text-center"><%= @post.title %></div>
+  <div class="col-sm-6 text-center">
+    <div class="text-break"><%= @post.title %></div>
+  </div>
   <div class="col-sm-3"></div>
+</div>
+<div class="row">
   <div class="col-sm-3 text-center">投稿本文</div>
-  <div class="col-sm-6 text-center"><%= @post.content %></div>
+  <div class="col-sm-6 text-center">
+    <div class="text-break"><%= @post.content %></div>
+  </div>
   <div class="col-sm-3">
     　<% if @post.favorite?(current_user) %>
     　<%= link_to post_post_favorite_path(@post.id), method: :delete do %>
@@ -42,10 +50,16 @@
       <% end %>
       <%= @post.post_favorites.count %>
     　コメント数<%= @post.post_comments.count %></div>
+</div>
+<div class="row">
   <div class="col-sm-3 text-center">コメント送信欄</div>
   <div class="col-sm-9 text-center"><%= render 'public/post_comments/form',post: @post, post_comment: @post_comment %></div>
+</div>
+<div class="row">
   <div class="col-sm-3 text-center">コメント一覧</div>
-  <div class="col-sm-9 text-center"><%= render 'public/post_comments/post_comments',post: @post %></div>
+    <div class="col-sm-9 text-center">
+    <%= render 'public/post_comments/post_comments',post: @post %>
+    </div>
 </div>
 
 

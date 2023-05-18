@@ -11,7 +11,7 @@
             <div class="card-deck">
           <% @posts.each do |post| %>
 
-          <div class="col-md-2">
+          <div class="col-md-4">
              <%= l post.created_at %>
             <div class="card mt-1">
               <%=link_to post_path(post) do %>
@@ -27,4 +27,10 @@
           <% end %>
     </div>
   </div>
+  <div class="col-sm-12 d-flex justify-content-center">
+  <%= paginate @posts %>
+</div>
   </div>
+
+
+
