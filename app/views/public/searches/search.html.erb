@@ -18,7 +18,7 @@
       <td><%= image_tag post.get_image, size: '50x50' %></td>
       <td><%= post.artist_name %></td>
       <td><%= post.song_title %></td>
-      <td><%= post.title %></td>
+      <td><%= link_to post.title,post_path(post) %></td>
       <td><%= l post.created_at %></td>
     </tr>
     <% end %>
@@ -71,7 +71,7 @@
       <td><%= image_tag post.get_image, size: '50x50' %></td>
       <td><%= post.artist_name %></td>
       <td><%= post.song_title %></td>
-      <td><%= post.title %></td>
+      <td><%= link_to post.title,post_path(post) %></td>
       <td><%= l post.created_at %></td>
     </tr>
     <% end %>

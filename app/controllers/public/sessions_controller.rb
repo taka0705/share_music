@@ -1,7 +1,7 @@
 # frozen_string_literal: true
 
 class Public::SessionsController < Devise::SessionsController
- 
+
 
   # GET /resource/sign_in
   # def new

@@ -36,7 +36,7 @@
 <div class="row">
   <div class="col-sm-3 text-center">投稿本文</div>
   <div class="col-sm-6 text-center">
-    <div class="text-break"><%= @post.content %></div>
+    <div class="text-break"><%= raw(@post.content.gsub(/\n/, "<br>")) %></div>
   </div>
   <div class="col-sm-3">
     　<% if @post.favorite?(current_user) %>
