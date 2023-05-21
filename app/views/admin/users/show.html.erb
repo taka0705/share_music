@@ -67,6 +67,7 @@
         <td><%= link_to post.title,admin_post_path(post.id) %></td>
         <td><%= post.post_comments.count %></td>
         <td><%= l post.created_at %></td>
+        <td><%= link_to "Show",admin_post_path(post) %></td>
       </tr>
     <% end %>
   </tbody>

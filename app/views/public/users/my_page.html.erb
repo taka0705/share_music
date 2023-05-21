@@ -51,6 +51,7 @@
         <td><%= post.song_title %></td>
         <td><%= link_to post.title,post_path(post) %></td>
         <td><%= l post.created_at %></td>
+        <td><%= link_to "Show",post_path(post) %></td>
       </tr>
     <% end %>
   </tbody>

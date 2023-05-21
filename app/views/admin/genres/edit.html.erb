@@ -1,6 +1,14 @@
 <div class="container">
+  <% if flash[:danger].present? %>
+  <div class="alert alert-danger">
+    <% flash[:danger].each do |message| %>
+      <p><%= message %></p>
+    <% end %>
+  </div>
+<% end %>
   <div class="card rounded col-4 mx-auto mt-4" style="background-color:#fcfced;" >
     <div class="row">
+      
       <div class="col-12 p-0">
         <div class="card-header">
           <h4 class="text-center">ジャンル編集</h4>

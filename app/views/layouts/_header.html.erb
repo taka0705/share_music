@@ -1,9 +1,20 @@
 <div class= "container-fluid bg-dark header fixed-top">
   <div class="row">
     <div class="col-md-3">
+      <% if admin_signed_in? %>
+
+      <%= link_to admin_root_path do %>
+        <%= image_tag 'logo.png',size:"140x140" %>
+      <% end %>
+
+      <% else %>
+
       <%= link_to root_path do %>
         <%= image_tag 'logo.png',size:"140x140" %>
       <% end %>
+
+      <% end %>
+
 
 
     </div>

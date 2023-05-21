@@ -1,4 +1,17 @@
+        <% if @user.errors.any? %>
+  <div id="error_explanation">
+    <h2><%= pluralize(@user.errors.count, "error") %> prohibited this post from being saved:</h2>
+
+    <ul>
+    <% @user.errors.full_messages.each do |message| %>
+      <li><%= message %></li>
+    <% end %>
+    </ul>
+  </div>
+<% end %>
+
 <div class="row">
+
   <div class="col-sm-5 text-center">
     <h2>ユーザ情報編集画面</h2>
   </div>

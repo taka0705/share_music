@@ -57,7 +57,7 @@ private
 
   def ensure_guest_user
     if current_user.name == "guestuser"
-      redirect_to user_path(current_user) , notice: 'ゲストユーザーは新規投稿や編集ができません。'
+      redirect_to posts_path , notice: 'ゲストユーザーは新規投稿や編集ができません。'
     end
   end
 

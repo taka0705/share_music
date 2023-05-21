@@ -1,5 +1,5 @@
 class Public::SearchesController < ApplicationController
-
+before_action :authenticate_user!,only: [:search]
   def search
     @range = params[:range]
 
@@ -11,7 +11,7 @@ class Public::SearchesController < ApplicationController
       @posts = Post.genre_looks(params[:genre_id]).order(created_at: :desc).page(params[:page]).per(10)
       @genre = Genre.find(params[:genre_id])
     elsif @range == "User"
-     @users = User.looks(params[:search], params[:word]).order(created_at: :desc).page(params[:page]).per(10)
+     @users = User.looks(params[:search], params[:word]).where.not(user_status: ["退会","無効"]).order(created_at: :desc).page(params[:page]).per(10)
     else
       @posts = []
     end

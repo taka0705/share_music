@@ -11,6 +11,10 @@ class User < ApplicationRecord
   devise :database_authenticatable, :registerable,
          :recoverable, :rememberable, :validatable
 
+         validates :name, presence: true
+
+         validates :email, presence: true
+
 
 
     enum user_status: {有効: 0,退会: 1,無効: 2}

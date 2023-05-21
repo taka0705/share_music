@@ -11,6 +11,7 @@
           <th>タイトル</th>
           <th>コメント数</th>
           <th>投稿日時</th>
+          <th colspan="6"></th>
         </tr>
       </thead>
       <tbody>
@@ -23,6 +24,7 @@
           <td><%= link_to post.title,admin_post_path(post.id) %></td>
           <td><%= post.post_comments.count %></td>
           <td><%= l post.created_at %></td>
+          <td><%= link_to "Show",admin_post_path(post) %></td>
         </tr>
         <% end %>
       </tbody>

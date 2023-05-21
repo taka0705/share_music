@@ -7,6 +7,12 @@ class Post < ApplicationRecord
     has_many :post_favorites, dependent: :destroy
     has_many :post_comments, dependent: :destroy
 
+    validates :artist_name, presence: true
+
+    validates :song_title, presence: true
+
+    validates :content, presence: true
+
 
     def favorite?(user)
      post_favorites.where(user_id: user.id).exists?
@@ -43,8 +49,8 @@ class Post < ApplicationRecord
       @post = Post.all
     end
   end
-  
-  
+
+
 
   def self.genre_looks(genre_id)
 
