@@ -12,7 +12,9 @@
     <%= l post.created_at %>
     <div class="row">
       <div class="col-sm-4 text-right">
+        <%=link_to post_path(post) do %>
         <%= image_tag post.get_image, size:"200x200" %>
+        <% end %>
       </div>
       <div class="col-sm-8 text-center pt-5">
         <div><%= post.artist_name %></div>

@@ -2,3 +2,15 @@ ja:
   time:
     formats:
       default: "%Y/%m/%d %H:%M:%S"
+
+  activerecord:
+    attributes:
+      genre:
+        name: "ジャンル名"
+      post:
+        artist_name: "アーティスト名"
+        song_title: "曲名"
+        content: "投稿内容"
+      user:
+        email: "メールアドレス"
+        name: "ユーザ名"
