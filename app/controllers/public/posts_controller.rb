@@ -20,14 +20,18 @@ class Public::PostsController < ApplicationController
   end
 
   def index
-    @posts=Post.order(created_at: :desc).page(params[:page]).per(10)
+    @posts=Post.includes(:user).where(users: {user_status: "有効"}).order(created_at: :desc).page(params[:page]).per(10)
     @genres=Genre.all
   end
 
   def show
-    @post=Post.find(params[:id])
+    @post=Post.includes(:user).find_by(id: params[:id], users: { user_status: "有効" })
+     if @post.nil?
+    flash[:error] = "指定された投稿は存在しないか、非表示にされています。"
+    redirect_to root_path
+     end
     @post_comment = PostComment.new
-    @user=@post.user
+    @user=Post.find(params[:id]).user
   end
 
   def edit
