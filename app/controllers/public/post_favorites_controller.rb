@@ -11,6 +11,7 @@ class Public::PostFavoritesController < ApplicationController
     @post_favorite.destroy
     redirect_to post_path(params[:post_id])
   end
+
 private
   def post_favorite_params
     params.require(:post_favorite).permit(:post_id)

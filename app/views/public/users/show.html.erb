@@ -3,55 +3,54 @@
    <%= image_tag @user.get_image, size:"150x150" %>
   </div>
   <div class="col-sm-8">
-    <div><h5><%= @user.name %></h5></div>
+    <div>
+      <h5><%= @user.name %></h5>
+    </div>
     <div><%= @user.try(:introduction) %></div>
   </div>
-
 </div>
 
 <div class="row">
-
-
-      <% if user_signed_in? && @user == current_user &&   @user.name != "guestuser"  %>
-  <div class="col-sm-9 text-right"><%= link_to "いいね一覧", user_favorites_path,class: "btn btn-warning" %></div>
-  <div class="col-sm-3 text-center"><%= link_to "編集", edit_user_path(@user),class: "btn btn-success" %></div>
-      <% end %>
+  <% if user_signed_in? && @user == current_user &&   @user.name != "guestuser"  %>
+    <div class="col-sm-9 text-right"><%= link_to "いいね一覧", user_favorites_path,class: "btn btn-warning" %></div>
+    <div class="col-sm-3 text-center"><%= link_to "編集", edit_user_path(@user),class: "btn btn-success" %></div>
+  <% end %>
 </div>
 
 <div class="row">
   <div class="col-sm-3 text-center">
     <h4><%= @user.name %>さんの投稿</h4>
-    </div>
+  </div>
 </div>
 
 <div class="row">
   <div class="col-sm-12">
-<table class='table table-hover table-inverse'>
-  <thead>
-    <tr>
-      <th>投稿画像</th>
-      <th>アーティスト名</th>
-      <th>曲名</th>
-      <th>タイトル</th>
-      <th>投稿日時</th>
-      <th colspan="5"></th>
-    </tr>
-  </thead>
-  <tbody>
-    <% @posts.each do |post| %>
-      <tr>
-        <td>
-          <%= image_tag post.get_image, size:'50x50' %>
-        </td>
-        <td><%= post.artist_name %></td>
-        <td><%= post.song_title %></td>
-        <td><%= link_to post.title,post_path(post) %></td>
-        <td><%= l post.created_at %></td>
-        <td><%= link_to "Show",post_path(post) %></td>
-      </tr>
-    <% end %>
-  </tbody>
-</table>
+    <table class='table table-hover table-inverse'>
+      <thead>
+        <tr>
+          <th>投稿画像</th>
+          <th>アーティスト名</th>
+          <th>曲名</th>
+          <th>タイトル</th>
+          <th>投稿日時</th>
+          <th colspan="5"></th>
+        </tr>
+      </thead>
+      <tbody>
+        <% @posts.each do |post| %>
+          <tr>
+            <td>
+              <%= image_tag post.get_image, size:'50x50' %>
+            </td>
+            <td><%= post.artist_name %></td>
+            <td><%= post.song_title %></td>
+            <td><%= link_to post.title,post_path(post) %></td>
+            <td><%= l post.created_at %></td>
+            <td><%= link_to "Show",post_path(post) %></td>
+          </tr>
+        <% end %>
+      </tbody>
+    </table>
   </div>
 </div>
 

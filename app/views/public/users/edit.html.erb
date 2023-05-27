@@ -1,4 +1,4 @@
-        <% if @user.errors.any? %>
+<% if @user.errors.any? %>
   <div id="error_explanation">
     <h2><%= pluralize(@user.errors.count, "error") %> prohibited this post from being saved:</h2>
 
@@ -23,6 +23,7 @@
 <%= form_with model: @user, url: user_path,method: :patch do |f| %>
 <div class="row">
   <div class="col-sm-12 text-center">
+
     <div class="field">
       <div class="row">
         <div class="col-sm-6">
@@ -33,7 +34,6 @@
         </div>
       </div>
     </div>
-
 
     <div class="field">
       <div class="row">
@@ -46,7 +46,6 @@
       </div>
     </div>
 
-
     <div class="field">
       <div class="row">
         <div class="col-sm-6">
@@ -58,7 +57,6 @@
       </div>
     </div>
 
-
     <div class="field">
       <div class="row">
         <div class="col-sm-6">
@@ -69,6 +67,7 @@
         </div>
       </div>
     </div>
+
   </div>
 </div>
 

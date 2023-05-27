@@ -3,11 +3,10 @@
     <h3><%= @user.name %>さんのユーザ情報編集</h3>
   </div>
 </div>
-
 <div class="row">
   <div class="col-sm-8 mx-auto">
     <%= form_with model: @user,url:admin_user_path(@user.id) do |f| %>
-          <table class= "table-borderless">
+      <table class= "table-borderless">
         <tr>
           <td>ユーザID</td>
           <td><%= @user.id %></td>
@@ -18,7 +17,6 @@
             <%= f.text_field :name %>
           </td>
         </tr>
-
         <tr>
           <td>メールアドレス</td>
           <td>
@@ -41,9 +39,8 @@
         <tr>
           <td><%= f.submit "更新",class: "btn btn-success" %></td>
         </tr>
-
       </table>
-      <% end %>
+    <% end %>
   </div>
 </div>
 

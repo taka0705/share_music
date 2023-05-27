@@ -1,6 +1,7 @@
 class Public::PostsController < ApplicationController
     before_action :authenticate_user!
     before_action :ensure_guest_user, only: [:edit,:new]
+    
   def new
     @post=Post.new
   end

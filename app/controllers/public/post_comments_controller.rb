@@ -15,9 +15,9 @@ class Public::PostCommentsController < ApplicationController
 
 private
 
-def post_comment_params
-  params.require(:post_comment).permit(:comment)
-end
+  def post_comment_params
+    params.require(:post_comment).permit(:comment)
+  end
 
   def ensure_guest_user
     @post = Post.find(params[:post_id])

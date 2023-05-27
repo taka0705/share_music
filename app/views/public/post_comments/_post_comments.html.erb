@@ -1,14 +1,13 @@
-       <% post.post_comments.each do |post_comment| %>
-
-<div class="row mb-2">
-         <div class="col-sm-2"><%= link_to post_comment.user.name,user_path(post_comment.user) %></div>
-         <div class="col-sm-6">
-           <div class="text-break"><%= post_comment.comment %></div>
-          </div>
-         <div class="col-sm-2"><% if post_comment.user == current_user %>
-            <%= link_to "削除", post_post_comment_path(post_comment.post, post_comment), method: :delete,class: "btn btn-danger btn-sm",remote: true %>
-         <% end %>
-         </div>
-</div>
-
-       <% end %>
+<% post.post_comments.each do |post_comment| %>
+  <div class="row mb-2">
+    <div class="col-sm-2"><%= link_to post_comment.user.name,user_path(post_comment.user) %></div>
+    <div class="col-sm-6">
+      <div class="text-break"><%= post_comment.comment %></div>
+    </div>
+    <div class="col-sm-2">
+      <% if post_comment.user == current_user %>
+        <%= link_to "削除", post_post_comment_path(post_comment.post, post_comment), method: :delete,class: "btn btn-danger btn-sm",remote: true %>
+      <% end %>
+    </div>
+  </div>
+<% end %>

@@ -1,5 +1,5 @@
-<div class="container"> 
-<% if flash[:error].present? %>
+<div class="container">
+  <% if flash[:error].present? %>
     <div class="alert alert-danger">
       <%= flash[:error] %>
     </div>
@@ -12,7 +12,6 @@
       <%= link_to "すべての投稿を見る",posts_path %>
     </div>
   </div>
-
   <% @posts.limit(4).each do |post| %>
     <%= l post.created_at %>
     <div class="row">

@@ -1,70 +1,75 @@
 <div class="container">
-<div class="row">
-  <div class="col-sm-9"><h3>投稿詳細</h3></div>
-  <div class="col-sm-1">
-    <% if user_signed_in? && @user == current_user %>
-    <%= link_to @post.user.name,user_my_page_path %>
-    <% else %>
-    <%= link_to @post.user.name,user_path(@user) %>
-    <% end %>
-  </div>
-  <div class="col-sm-2">
+
+  <div class="row">
+    <div class="col-sm-9"><h3>投稿詳細</h3></div>
+    <div class="col-sm-1">
       <% if user_signed_in? && @user == current_user %>
-    <%= link_to "編集", edit_post_path(@post), class: "btn btn-success" %>
-    <%= link_to "削除", post_path(@post),method: :delete, data: { confirm: '本当に消しますか？' }, class: "btn btn-danger" %>
-
-    <% end %>
-    <p><%= l @post.created_at %></p>
-  </div>
-</div>
-<div class="row">
-  <div class="col-3 text-center">投稿画像</div>
-  <div class="col-6 text-center">
-<%= image_tag @post.get_image, size:"150x150" %>
-</div>
-</div>
-<div class="row">
-  <div class="col-sm-3 text-center">アーティスト名</div>
-  <div class="col-sm-3 text-center"><%= @post.artist_name %></div>
-  <div class="col-sm-3 text-center">曲名</div>
-  <div class="col-sm-3 text-center"><%= @post.song_title %></div>
-</div>
-
-<div class="row">
-  <div class="col-sm-3 text-center">タイトル</div>
-  <div class="col-sm-6 text-center">
-    <div class="text-break"><%= @post.title %></div>
-  </div>
-  <div class="col-sm-3"></div>
-</div>
-<div class="row">
-  <div class="col-sm-3 text-center">投稿本文</div>
-  <div class="col-sm-6 text-center">
-    <div class="text-break"><%= raw(@post.content.gsub(/\n/, "<br>")) %></div>
-  </div>
-  <div class="col-sm-3">
-    　<% if @post.favorite?(current_user) %>
-    　<%= link_to post_post_favorite_path(@post.id), method: :delete do %>
-        <span style="color:red;">❤︎</span>
-      <% end %>
+      <%= link_to @post.user.name,user_my_page_path %>
       <% else %>
-      <%= link_to post_post_favorites_path(@post.id),method: :post do %>
-      <span>❤︎</span>
+      <%= link_to @post.user.name,user_path(@user) %>
       <% end %>
+    </div>
+    <div class="col-sm-2">
+      <% if user_signed_in? && @user == current_user %>
+        <%= link_to "編集", edit_post_path(@post), class: "btn btn-success" %>
+        <%= link_to "削除", post_path(@post),method: :delete, data: { confirm: '本当に消しますか？' }, class: "btn btn-danger" %>
+      <% end %>
+      <p><%= l @post.created_at %></p>
+    </div>
+  </div>
+
+  <div class="row">
+    <div class="col-3 text-center">投稿画像</div>
+    <div class="col-6 text-center">
+      <%= image_tag @post.get_image, size:"150x150" %>
+    </div>
+  </div>
+
+  <div class="row">
+    <div class="col-sm-3 text-center">アーティスト名</div>
+    <div class="col-sm-3 text-center"><%= @post.artist_name %></div>
+    <div class="col-sm-3 text-center">曲名</div>
+    <div class="col-sm-3 text-center"><%= @post.song_title %></div>
+  </div>
+
+  <div class="row">
+    <div class="col-sm-3 text-center">タイトル</div>
+    <div class="col-sm-6 text-center">
+      <div class="text-break"><%= @post.title %></div>
+    </div>
+    <div class="col-sm-3"></div>
+  </div>
+
+  <div class="row">
+    <div class="col-sm-3 text-center">投稿本文</div>
+    <div class="col-sm-6 text-center">
+      <div class="text-break"><%= raw(@post.content.gsub(/\n/, "<br>")) %></div>
+    </div>
+    <div class="col-sm-3">
+      <% if @post.favorite?(current_user) %>
+    　   <%= link_to post_post_favorite_path(@post.id), method: :delete do %>
+          <span style="color:red;">❤︎</span>
+        <% end %>
+      <% else %>
+        <%= link_to post_post_favorites_path(@post.id),method: :post do %>
+        <span>❤︎</span>
+        <% end %>
       <% end %>
       <%= @post.post_favorites.count %>
-    　コメント数<%= @post.post_comments.count %></div>
-</div>
-<div class="row">
-  <div class="col-sm-3 text-center">コメント送信欄</div>
-  <div class="col-sm-9 text-center"><%= render 'public/post_comments/form',post: @post, post_comment: @post_comment %></div>
-</div>
-<div class="row">
-  <div class="col-sm-3 text-center">コメント一覧</div>
-    <div class="col-sm-9 text-center">
-    <%= render 'public/post_comments/post_comments',post: @post %>
+    　コメント数<%= @post.post_comments.count %>
     </div>
-</div>
+  </div>
 
+  <div class="row">
+    <div class="col-sm-3 text-center">コメント送信欄</div>
+    <div class="col-sm-9 text-center"><%= render 'public/post_comments/form',post: @post, post_comment: @post_comment %></div>
+  </div>
+
+  <div class="row">
+    <div class="col-sm-3 text-center">コメント一覧</div>
+      <div class="col-sm-9 text-center">
+      <%= render 'public/post_comments/post_comments',post: @post %>
+      </div>
+  </div>
 
 </div>

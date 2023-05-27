@@ -1,5 +1,6 @@
 class Public::SearchesController < ApplicationController
 before_action :authenticate_user!,only: [:search]
+
   def search
     @range = params[:range]
 
@@ -15,10 +16,6 @@ before_action :authenticate_user!,only: [:search]
     else
       @posts = []
     end
-
-
-
   end
-
 
 end

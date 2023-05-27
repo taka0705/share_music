@@ -2,99 +2,91 @@
   <div class="row">
     <div class="col-md-3">
       <% if admin_signed_in? %>
-
-      <%= link_to admin_root_path do %>
-        <%= image_tag 'logo.png',size:"140x140" %>
+        <%= link_to admin_root_path do %>
+          <%= image_tag 'logo.png',size:"140x140" %>
+        <% end %>
+        <% else %>
+        <%= link_to root_path do %>
+          <%= image_tag 'logo.png',size:"140x140" %>
+        <% end %>
       <% end %>
-
-      <% else %>
-
-      <%= link_to root_path do %>
-        <%= image_tag 'logo.png',size:"140x140" %>
-      <% end %>
-
-      <% end %>
-
-
-
     </div>
     <div class="col-md-9 text-right">
       <p>
- <% if admin_signed_in? %>
- <div class="d-flex justify-content-end align-items-start">
-        <%= link_to admin_posts_path,class: 'nav-link text-light' do %>
-         <i class="fas fa-th"></i>投稿一覧
+        <% if admin_signed_in? %>
+          <div class="d-flex justify-content-end align-items-start">
+            <%= link_to admin_posts_path,class: 'nav-link text-light' do %>
+             <i class="fas fa-th"></i>投稿一覧
+            <% end %>
+            <%= link_to admin_root_path,class: 'nav-link text-light' do %>
+            <i class="fas fa-users"></i>ユーザ一覧
+            <% end %>
+            <%= link_to admin_genres_path ,class: 'nav-link text-light' do %>
+            <i class="fas fa-list-alt"></i>ジャンル一覧
+            <% end %>
+            <%= link_to destroy_admin_session_path, method: :delete, class: 'nav-link text-light' do %>
+            <i class="fas fa-sign-out-alt"></i>ログアウト
+            <% end %>
+          </div>
+          <div class="search_form">
+            <%= form_with url: admin_searches_path, local: true, method: :get do |f| %>
+            <%= f.text_field :word %>
+            <%= f.select :range, options_for_select([['Artist'], ['Song'],['User']]) %>
+            <%= f.select :search, options_for_select([["完全一致","perfect_match"], ["前方一致","forward_match"],  ["後方一致","backward_match"], ["部分一致","partial_match"]]) %>
+            <%= f.submit "検索", class: "btn btn-primary" %>
+            <% end %>
+          </div>
+        <% elsif user_signed_in? %>
+          <div class="d-flex justify-content-end align-items-start">
+            <%= link_to user_my_page_path,class: 'nav-link text-light' do %>
+            <i class="fas fa-house-user"></i>マイページ
+            <% end %>
+            <%= link_to  posts_path,class: 'nav-link text-light' do %>
+            <i class="fas fa-th"></i>投稿一覧
+            <% end %>
+            <%= link_to new_post_path,class: 'nav-link text-light' do %>
+            <i class="fas fa-pen"></i>投稿する
+            <% end %>
+            <%= link_to destroy_user_session_path, method: :delete, class: 'nav-link text-light' do %>
+            <i class="fas fa-sign-out-alt"></i>ログアウト
+            <% end %>
+          </div>
+          <div class="search_form">
+            <%= form_with url: searches_path, local: true, method: :get do |f| %>
+            <%= f.text_field :word %>
+            <%= f.select :range, options_for_select([['Artist'], ['Song'],['User']]) %>
+            <%= f.select :search, options_for_select([["完全一致","perfect_match"], ["前方一致","forward_match"],  ["後方一致","backward_match"], ["部分一致","partial_match"]]) %>
+            <%= f.submit "検索", class: "btn btn-primary" %>
+            <% end %>
+          </div>
+        <% else %>
+          <div class="d-flex justify-content-end align-items-start">
+            <%= link_to users_guest_sign_in_path, class: 'nav-link text-light', method: :post do %>
+            <i class="fas fa-user"></i>ゲストログイン（閲覧用）
+            <% end %>
+            <%= link_to about_path,class: 'nav-link text-light' do %>
+            <i class="fas fa-smile-wink"></i>About
+            <% end %>
+            <%= link_to posts_path,class: 'nav-link text-light' do %>
+            <i class="fas fa-th"></i>投稿一覧
+            <% end %>
+            <%= link_to new_user_registration_path,class: 'nav-link text-light' do %>
+            <i class="fas fa-user-plus"></i>新規登録
+            <% end %>
+            <%= link_to new_user_session_path,class: 'nav-link text-light' do %>
+            <i class="fas fa-sign-in-alt"></i> ログイン
+            <% end %>
+          </div>
+          <div class="search_form">
+            <%= form_with url: searches_path, local: true, method: :get do |f| %>
+            <%= f.text_field :word %>
+            <%= f.select :range, options_for_select([['Artist'], ['Song'],['User']]) %>
+            <%= f.select :search, options_for_select([["完全一致","perfect_match"], ["前方一致","forward_match"],  ["後方一致","backward_match"], ["部分一致","partial_match"]]) %>
+            <%= f.submit "検索", class: "btn btn-primary" %>
+            <% end %>
+          </div>
         <% end %>
-        <%= link_to admin_root_path,class: 'nav-link text-light' do %>
-        <i class="fas fa-users"></i>ユーザ一覧
-        <% end %>
-        <%= link_to admin_genres_path ,class: 'nav-link text-light' do %>
-        <i class="fas fa-list-alt"></i>ジャンル一覧
-        <% end %>
-        <%= link_to destroy_admin_session_path, method: :delete, class: 'nav-link text-light' do %>
-        <i class="fas fa-sign-out-alt"></i>ログアウト
-        <% end %>
-</div>
-        <div class="search_form">
-          <%= form_with url: admin_searches_path, local: true, method: :get do |f| %>
-          <%= f.text_field :word %>
-          <%= f.select :range, options_for_select([['Artist'], ['Song'],['User']]) %>
-          <%= f.select :search, options_for_select([["完全一致","perfect_match"], ["前方一致","forward_match"],  ["後方一致","backward_match"], ["部分一致","partial_match"]]) %>
-          <%= f.submit "検索", class: "btn btn-primary" %>
-          <% end %>
-        </div>
-<% elsif user_signed_in? %>
-<div class="d-flex justify-content-end align-items-start">
-        <%= link_to user_my_page_path,class: 'nav-link text-light' do %>
-        <i class="fas fa-house-user"></i>マイページ
-        <% end %>
-        <%= link_to  posts_path,class: 'nav-link text-light' do %>
-        <i class="fas fa-th"></i>投稿一覧
-        <% end %>
-        <%= link_to new_post_path,class: 'nav-link text-light' do %>
-        <i class="fas fa-pen"></i>投稿する
-        <% end %>
-        <%= link_to destroy_user_session_path, method: :delete, class: 'nav-link text-light' do %>
-        <i class="fas fa-sign-out-alt"></i>ログアウト
-        <% end %>
-</div>
-        <div class="search_form">
-        <%= form_with url: searches_path, local: true, method: :get do |f| %>
-        <%= f.text_field :word %>
-        <%= f.select :range, options_for_select([['Artist'], ['Song'],['User']]) %>
-        <%= f.select :search, options_for_select([["完全一致","perfect_match"], ["前方一致","forward_match"],  ["後方一致","backward_match"], ["部分一致","partial_match"]]) %>
-        <%= f.submit "検索", class: "btn btn-primary" %>
-        <% end %>
-        </div>
-<% else %>
-<div class="d-flex justify-content-end align-items-start">
-        <%= link_to users_guest_sign_in_path, class: 'nav-link text-light', method: :post do %>
-        <i class="fas fa-user"></i>ゲストログイン（閲覧用）
-        <% end %>
-        <%= link_to about_path,class: 'nav-link text-light' do %>
-        <i class="fas fa-smile-wink"></i>About
-        <% end %>
-        <%= link_to posts_path,class: 'nav-link text-light' do %>
-        <i class="fas fa-th"></i>投稿一覧
-        <% end %>
-        <%= link_to new_user_registration_path,class: 'nav-link text-light' do %>
-        <i class="fas fa-user-plus"></i>新規登録
-        <% end %>
-        <%= link_to new_user_session_path,class: 'nav-link text-light' do %>
-        <i class="fas fa-sign-in-alt"></i> ログイン
-        <% end %>
-        </div>
-        <div class="search_form">
-        <%= form_with url: searches_path, local: true, method: :get do |f| %>
-        <%= f.text_field :word %>
-        <%= f.select :range, options_for_select([['Artist'], ['Song'],['User']]) %>
-        <%= f.select :search, options_for_select([["完全一致","perfect_match"], ["前方一致","forward_match"],  ["後方一致","backward_match"], ["部分一致","partial_match"]]) %>
-        <%= f.submit "検索", class: "btn btn-primary" %>
-        <% end %>
-        </div>
-<% end %>
       </p>
-
     </div>
   </div>
 </div>

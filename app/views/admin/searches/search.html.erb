@@ -1,56 +1,54 @@
 <% if @range == "Artist" || @range == "Song" %>
   <h2>"<%= params[:word] %>"の検索結果</h2>
-
   <table class="table table-hover table-inverse">
-  <thead>
-    <tr>
-      <th>投稿画像</th>
-      <th>アーティスト名</th>
-      <th>曲名</th>
-      <th>タイトル</th>
-      <th>投稿日時</th>
-      <th colspan="5"></th>
-    </tr>
-  </thead>
-  <tbody>
-    <% @posts.each do |post| %>
-    <tr>
-      <td><%= image_tag post.get_image, size: '50x50' %></td>
-      <td><%= post.artist_name %></td>
-      <td><%= post.song_title %></td>
-      <td><%= post.title %></td>
-      <td><%= l post.created_at %></td>
-    </tr>
-    <% end %>
-  </tbody>
+    <thead>
+      <tr>
+        <th>投稿画像</th>
+        <th>アーティスト名</th>
+        <th>曲名</th>
+        <th>タイトル</th>
+        <th>投稿日時</th>
+        <th colspan="5"></th>
+      </tr>
+    </thead>
+    <tbody>
+      <% @posts.each do |post| %>
+      <tr>
+        <td><%= image_tag post.get_image, size: '50x50' %></td>
+        <td><%= post.artist_name %></td>
+        <td><%= post.song_title %></td>
+        <td><%= post.title %></td>
+        <td><%= l post.created_at %></td>
+      </tr>
+      <% end %>
+    </tbody>
   </table>
 
-  　　<div class="col-md-12 d-flex justify-content-center">
-        <%= paginate @posts %>
-    </div>
+  <div class="col-md-12 d-flex justify-content-center">
+    <%= paginate @posts %>
+  </div>
 <% elsif  @range == "User"%>
   <h2>"<%= params[:word] %>"の検索結果</h2>
-
   <table class="table table-hover table-inverse">
-  <thead>
-    <tr>
-      <th>ユーザ画像</th>
-      <th>ユーザ名</th>
-      <th colspan="2"></th>
-    </tr>
-  </thead>
-  <tbody>
-    <% @users.each do |user| %>
-    <tr>
-      <td><%= image_tag user.get_image, size: '50x50' %></td>
-      <td><%= link_to user.name,admin_user_path(user.id) %></td>
-    </tr>
-    <% end %>
-  </tbody>
+    <thead>
+      <tr>
+        <th>ユーザ画像</th>
+        <th>ユーザ名</th>
+        <th colspan="2"></th>
+      </tr>
+    </thead>
+    <tbody>
+      <% @users.each do |user| %>
+      <tr>
+        <td><%= image_tag user.get_image, size: '50x50' %></td>
+        <td><%= link_to user.name,admin_user_path(user.id) %></td>
+      </tr>
+      <% end %>
+    </tbody>
   </table>
 
-    <div class="col-md-12 d-flex justify-content-center">
-        <%= paginate @users %>
-    </div>
+  <div class="col-md-12 d-flex justify-content-center">
+    <%= paginate @users %>
+  </div>
 
 <% end %>
