@@ -40,7 +40,7 @@ class Public::UsersController < ApplicationController
   def favorites
     @user = current_user
     favorites = PostFavorite.where(user_id: @user.id).order(created_at: :desc).pluck(:post_id)
-    @favorites_posts = Post.where(id: favorites).page(params[:page]).per(10)
+    @favorites_posts = Post.includes(:user).where(users: {user_status: "有効"}).where(id: favorites).page(params[:page]).per(10)
   end
 
   def complete
