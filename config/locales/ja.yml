@@ -14,3 +14,6 @@ ja:
       user:
         email: "メールアドレス"
         name: "ユーザ名"
+    errors:
+      messages:
+        record_invalid: "バリデーションに失敗しました: %{errors}"
