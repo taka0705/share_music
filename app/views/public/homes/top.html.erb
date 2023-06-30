@@ -1,4 +1,4 @@
-<div class="container">
+<div class="container px-5 px-sm-0">
   <% if flash[:error].present? %>
     <div class="alert alert-danger">
       <%= flash[:error] %>
@@ -8,7 +8,7 @@
     <div class="col-sm-4 text-center">
     <h4>新着投稿</h4>
     </div>
-    <div class="col-sm-8 text-center">
+    <div class="col-sm-8 text-right">
       <%= link_to "すべての投稿を見る",posts_path %>
     </div>
   </div>

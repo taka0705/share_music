@@ -1,4 +1,7 @@
 <% if @range == "Artist" || @range == "Song" %>
+<div class="container">
+  <div class="row">
+    <div class="col-md-12">
   <h2>"<%= params[:word] %>"の検索結果</h2>
 
   <table class="table table-hover table-inverse">
@@ -25,11 +28,17 @@
       <% end %>
     </tbody>
   </table>
+    </div>
   <div class="col-md-12 d-flex justify-content-center">
       <%= paginate @posts %>
   </div>
+  </div>
+</div>
 
 <% elsif  @range == "User"%>
+<div class="container">
+  <div class="row">
+    <div class="col-sm-12">
   <h2>"<%= params[:word] %>"の検索結果</h2>
 
   <table class="table table-hover table-inverse">
@@ -49,10 +58,16 @@
       <% end %>
     </tbody>
   </table>
+  </div>
   <div class="col-md-12 d-flex justify-content-center">
       <%= paginate @users %>
   </div>
+  </div>
+</div>
 <% else %>
+<div class="container">
+  <div class="row">
+    <div class="col-sm-12">
   <h2>"<%= @genre.name %>"の検索結果</h2>
 
   <table class="table table-hover table-inverse">
@@ -79,7 +94,10 @@
       <% end %>
     </tbody>
   </table>
+  </div>
   <div class="col-md-12 d-flex justify-content-center">
       <%= paginate @posts %>
   </div>
+  </div>
+</div>
 <% end %>
