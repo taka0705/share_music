@@ -1,4 +1,7 @@
+<div class="container px-5 px-sm-0">
 <% if @range == "Artist" || @range == "Song" %>
+<div class="row">
+  <div class="col-md-12">
   <h2>"<%= params[:word] %>"の検索結果</h2>
   <table class="table table-hover table-inverse">
     <thead>
@@ -17,17 +20,23 @@
         <td><%= image_tag post.get_image, size: '50x50' %></td>
         <td><%= post.artist_name %></td>
         <td><%= post.song_title %></td>
-        <td><%= post.title %></td>
+        <td><%= link_to post.title,admin_post_path(post) %></td>
         <td><%= l post.created_at %></td>
+        <td><%= link_to "Show",admin_post_path(post) %></td>
       </tr>
       <% end %>
     </tbody>
   </table>
+  </div>
 
   <div class="col-md-12 d-flex justify-content-center">
     <%= paginate @posts %>
   </div>
+</div>
+
 <% elsif  @range == "User"%>
+<div class="row">
+  <div class="col-md-12">
   <h2>"<%= params[:word] %>"の検索結果</h2>
   <table class="table table-hover table-inverse">
     <thead>
@@ -46,9 +55,12 @@
       <% end %>
     </tbody>
   </table>
+  </div>
 
   <div class="col-md-12 d-flex justify-content-center">
     <%= paginate @users %>
   </div>
+</div>
 
 <% end %>
+</div>
