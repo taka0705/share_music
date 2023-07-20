@@ -1,7 +1,7 @@
 class Public::PostsController < ApplicationController
     before_action :authenticate_user!
     before_action :ensure_guest_user, only: [:edit,:new]
-    
+
   def new
     @post=Post.new
   end
@@ -37,6 +37,9 @@ class Public::PostsController < ApplicationController
 
   def edit
     @post=Post.find(params[:id])
+    if @post.user != current_user
+      redirect_to post_path(@post),notice: '他のユーザーの投稿を編集することはできません。'
+    end
   end
 
   def update
