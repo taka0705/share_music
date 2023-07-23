@@ -21,7 +21,7 @@
                <%= l post.created_at %>
             <div class="card mt-1">
                 <%=link_to post_path(post) do %>
-                  <%= image_tag post.get_image, size:"100x100" %>
+                  <%= image_tag post.get_image, class:"index-img" %>
                 <% end %>
               <div class="card-body">
                 <p class="card-title"><%= post.artist_name %></p>

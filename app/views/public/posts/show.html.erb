@@ -24,30 +24,30 @@
   </div>
 
   <div class="row">
-    <div class="col-3 text-center">投稿画像</div>
+    <div class="col-3 text-left">投稿画像</div>
     <div class="col-6 text-center">
-      <%= image_tag @post.get_image, size:"150x150" %>
+      <%= image_tag @post.get_image, class:"show-img" %>
     </div>
   </div>
 
   <div class="row">
-    <div class="col-sm-3 text-center">アーティスト名</div>
-    <div class="col-sm-3 text-center"><%= @post.artist_name %></div>
-    <div class="col-sm-3 text-center">曲名</div>
-    <div class="col-sm-3 text-center"><%= @post.song_title %></div>
+    <div class="col-sm-3 text-left">アーティスト名</div>
+    <div class="col-sm-3 text-left"><%= @post.artist_name %></div>
+    <div class="col-sm-3 text-left">曲名</div>
+    <div class="col-sm-3 text-left"><%= @post.song_title %></div>
   </div>
 
   <div class="row">
-    <div class="col-sm-3 text-center">タイトル</div>
-    <div class="col-sm-6 text-center">
+    <div class="col-sm-3 text-left">タイトル</div>
+    <div class="col-sm-6 text-left">
       <div class="text-break"><%= @post.title %></div>
     </div>
     <div class="col-sm-3"></div>
   </div>
 
   <div class="row">
-    <div class="col-sm-3 text-center">投稿本文</div>
-    <div class="col-sm-6 text-center">
+    <div class="col-sm-3 text-left">投稿本文</div>
+    <div class="col-sm-6 text-left">
       <div class="text-break"><%= raw(@post.content.gsub(/\n/, "<br>")) %></div>
     </div>
     <div class="col-sm-3">
@@ -66,13 +66,13 @@
   </div>
 
   <div class="row">
-    <div class="col-sm-3 text-center">コメント送信欄</div>
-    <div class="col-sm-9 text-center"><%= render 'public/post_comments/form',post: @post, post_comment: @post_comment %></div>
+    <div class="col-sm-3 text-left">コメント送信欄</div>
+    <div class="col-sm-9 text-left"><%= render 'public/post_comments/form',post: @post, post_comment: @post_comment %></div>
   </div>
 
   <div class="row">
-    <div class="col-sm-3 text-center">コメント一覧</div>
-      <div class="col-sm-9 text-center">
+    <div class="col-sm-3 text-left">コメント一覧</div>
+      <div class="col-sm-9 text-left">
       <%= render 'public/post_comments/post_comments',post: @post %>
       </div>
   </div>
