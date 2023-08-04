@@ -17,7 +17,7 @@
     <tbody>
       <% @posts.each do |post| %>
       <tr>
-        <td><%= image_tag post.get_image, size: '50x50' %></td>
+        <td><%= image_tag post.get_image, class:"small-img" %></td>
         <td><%= post.artist_name %></td>
         <td><%= post.song_title %></td>
         <td><%= link_to post.title,admin_post_path(post) %></td>
@@ -49,7 +49,7 @@
     <tbody>
       <% @users.each do |user| %>
       <tr>
-        <td><%= image_tag user.get_image, size: '50x50' %></td>
+        <td><%= image_tag user.get_image, class:"small-img" %></td>
         <td><%= link_to user.name,admin_user_path(user.id) %></td>
       </tr>
       <% end %>
