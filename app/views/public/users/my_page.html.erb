@@ -45,7 +45,7 @@
         <% @posts.each do |post| %>
           <tr>
             <td>
-              <%= image_tag post.get_image, size:'50x50' %>
+              <%= image_tag post.get_image, class:"small-img" %>
             </td>
             <td><%= post.artist_name %></td>
             <td><%= post.song_title %></td>
