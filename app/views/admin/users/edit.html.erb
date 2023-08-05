@@ -28,13 +28,13 @@
           <td>会員ステータス</td>
           <td>
             <%= f.radio_button :user_status, "有効" %>
-            <%= f.label :user_status,"有効" %>
+            <%= f.label :user_status,"有効",value: "有効" %>
 
             <%= f.radio_button :user_status, "退会" %>
-            <%= f.label :user_status,"退会" %>
+            <%= f.label :user_status,"退会",value: "退会" %>
 
             <%= f.radio_button :user_status,"無効" %>
-            <%= f.label :user_status,"無効" %>
+            <%= f.label :user_status,"無効",value: "無効" %>
           </td>
         </tr>
         <tr>
